@@ -1,0 +1,16 @@
+@import "tailwindcss";
+
+@theme {
+  --color-cusoc-red: #E63946;
+  --color-cusoc-silver: #C0C0C0;
+  --color-cusoc-bg: #FAFAFA;
+  --color-cusoc-surface: #FFFFFF;
+  --color-cusoc-text: #111827;
+  --font-space-grotesk: "Space Grotesk", sans-serif;
+}
+
+body {
+  background-color: var(--color-cusoc-bg);
+  color: var(--color-cusoc-text);
+  font-family: var(--font-space-grotesk);
+}
