@@ -28,6 +28,12 @@ app.get('/', (req, res) => {
   res.send('CUSoC API is running');
 });
 
-const PORT = process.env.PORT || 5000;
+// Start server only in non-serverless environments (e.g. local dev)
+// Vercel handles listening automatically via the exported app
+if (process.env.NODE_ENV !== 'production') {
+  const PORT = process.env.PORT || 5000;
+  app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+}
 
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+module.exports = app;
+

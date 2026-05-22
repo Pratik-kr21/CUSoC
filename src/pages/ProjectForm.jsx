@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import axios from 'axios';
+import api from '../api';
 
 const inputClass = "w-full bg-white border border-gray-200 rounded-lg px-4 py-3 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-cusoc-red focus:ring-2 focus:ring-cusoc-red/10 transition-all text-sm";
 const labelClass = "block text-sm font-semibold text-gray-700 mb-2";
@@ -62,7 +62,7 @@ const ProjectForm = () => {
         willingToMentor: formData.willingToMentor === 'Yes',
         projectDomain: projectDomain,
       };
-      await axios.post('http://localhost:5000/api/apply/project', payload);
+      await api.post('/api/apply/project', payload);
       setStatus('success');
     } catch {
       setStatus('error');

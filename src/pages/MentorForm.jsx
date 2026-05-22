@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import axios from 'axios';
+import api from '../api';
 
 const MentorForm = () => {
   const [mentorType, setMentorType] = useState('Industry');
@@ -31,7 +31,7 @@ const MentorForm = () => {
     data.append('resume', file);
 
     try {
-      await axios.post('http://localhost:5000/api/apply/mentor', data, {
+      await api.post('/api/apply/mentor', data, {
         headers: { 'Content-Type': 'multipart/form-data' }
       });
       setStatus('Success! Your mentor application has been submitted.');

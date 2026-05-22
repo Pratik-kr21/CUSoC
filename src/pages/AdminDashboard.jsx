@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import api from '../api';
 
 const AdminDashboard = () => {
   const [data, setData] = useState({ contributors: [], mentors: [], projects: [] });
@@ -13,7 +13,7 @@ const AdminDashboard = () => {
 
     const fetchData = async () => {
       try {
-        const res = await axios.get('http://localhost:5000/api/admin/submissions', {
+        const res = await api.get('/api/admin/submissions', {
           headers: { Authorization: `Bearer ${token}` }
         });
         setData(res.data);
@@ -30,7 +30,7 @@ const AdminDashboard = () => {
   const updateStatus = async (type, id, status) => {
     try {
       const token = localStorage.getItem('adminToken');
-      await axios.put(`http://localhost:5000/api/admin/submissions/${type}/${id}`, { status }, {
+      await api.put(`/api/admin/submissions/${type}/${id}`, { status }, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setData(prev => ({
